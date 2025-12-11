@@ -1,4 +1,4 @@
-# Cherrypick
+# Cherrypick 🍒
 
 ## Goal 🎯:
 
