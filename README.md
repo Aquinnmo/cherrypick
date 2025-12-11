@@ -1,16 +1,21 @@
-# cherrypick
+# Cherrypick 🍒
 
-A new Flutter project.
+## Goal 🎯:
 
-## Getting Started
+A fantasy hockey pick 'em game for mobile.
 
-This project is a starting point for a Flutter application.
+It will be a cross-platform application for iOS and Android. The app will be as easy to use as possible.
 
-A few resources to get you started if this is your first Flutter project:
+The user will first log-in then will be taken to their dashboard for all the leagues they are in.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+They will then select a league and make all their picks for who will win the game. Eventually, it will have an update so users can choose who will cover the spread instead.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Each league will feature cummulative rankings across the entire NHL season.
+
+Each user will pick for every Friday, Saturday, and Sunday game on the NHL schedule. This was a design choice to not overwhelm users.
+
+## Tech Stack:
+
+- Mobile Front-End: Flutter or React-Native (still undecided)
+- Databases: Hybrid of Firebase and Supabase
+- Back-End Middleware: Supabase
