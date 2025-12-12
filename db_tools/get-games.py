@@ -66,6 +66,7 @@ while cDate <= end:
     print(str(len(fridayGames)) + " game(s) on Friday, " + str(len(saturdayGames)) + " game(s) on Saturday, " + str(len(sundayGames)) + " game(s) on Sunday")
 
     if (len(fridayGames) + len(saturdayGames) + len(sundayGames)) == 0:
+        print("No games this week. Advancing a week...")
         cDate = cDate + timedelta(days=7)
         continue
 
