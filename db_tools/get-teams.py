@@ -35,8 +35,6 @@ for s in standings:
 
     cleaned[teamKey] = team
 
-#works to this point
-
 db = firestore.client()
 
 for key in cleaned.keys():
