@@ -40,7 +40,7 @@ Each table has a subheader following the overview.
 
 This table is unique in that it stores user authentication data but is handled entirely by Firebase itself. I don't know if we actually can/need to query to it directly.
 
-### Table: team0s
+### Table: teams
 
 This table houses documents for each team. The ID is the three letter team abbreviation (ex. Chicago Blackhawks --> `CHI`)
 
@@ -86,6 +86,8 @@ This table has the following fields following a nested structure:
 }
 ```
 
+As of now, the data refreshes on Friday, Saturday, Sunday, and Monday mornings at 3:30am Eastern time. This will be updated to refresh before the games start on Fridays, Saturdays, and Sundays and continuously refresh the data (at some constant interval) until the games for that day are finished.
+
 ### Tables: leagues
 
 Being built
@@ -93,6 +95,10 @@ Being built
 ### Tables: users
 
 Being built
+
+### Server
+
+The server right now is a local Raspberry Pi. It will either be upgraded to a mini-PC or moved into the cloud in the future.
 
 ## Front-End - UI Samples
 
