@@ -16,12 +16,85 @@ Each user will pick for every Friday, Saturday, and Sunday game on the NHL sched
 
 ## Tech Stack:
 
-- Mobile Front-End: Flutter or React-Native (still undecided)
-- Databases: Hybrid of Firebase and Supabase
-- Back-End Middleware: Supabase
+- Mobile Front-End: Flutter
+- Databases: Firebase
+- Middleware: Local Server -> Raspberry Pi
 
+## Back-End 
 
-## UI Samples
+### Overview
+
+The only database we will use is Firebase. If our needs change later on (high demand, advanced analytics, etc.) we can move to a SQL database, but for now a NoSQL database like Firebase works great.
+
+We will have the following tables:
+
+- authentication
+- teams
+- games
+- leagues
+- users
+
+Each table has a subheader following the overview.
+
+### Table: Authentication
+
+This table is unique in that it stores user authentication data but is handled entirely by Firebase itself. I don't know if we actually can/need to query to it directly.
+
+### Table: team0s
+
+This table houses documents for each team. The ID is the three letter team abbreviation (ex. Chicago Blackhawks --> `CHI`)
+
+This table has the following fields for each document:
+
+```
+{
+    conference,
+    division,
+    gamesPlayed,
+    losses,
+    otLosses,
+    pointPctg,
+    points,
+    wins
+}
+```
+
+This data is all updated from the publicly available official NHL API at 3:30am every night (Eastern).
+
+### Table: games
+
+This table houses every NHL game that is played on every Friday, Saturday, and Sunday of the regular season. The games are grouped by week.
+
+The document identifier is the week number (as a string), starting at 1 for the first week of the season, only incrementing to the next week if there is at least one game on the Friday, Saturday, or Sunday of that week.
+
+This table has the following fields following a nested structure:
+
+```
+{
+    gameID:
+    {
+        away: awayTeamAbbreviation,
+        awayScore: final away score/"NULL" if the game has not started,
+        home: homeTeamAbbreviation,
+        homeScore: final away score/"NULL" if the game has not started,
+        dayOfWeek: "FRI"/"SAT"/"SUN",
+        endingPeriod: "REG"/"OT"/"SO",
+        gameState: "FUT"/"LIVE"/"OFF"/etc.,
+        startTimeUTC: as a string,
+        venue: where the game is being played
+    }
+}
+```
+
+### Tables: leagues
+
+Being built
+
+### Tables: users
+
+Being built
+
+## Front-End - UI Samples
 
 Each screen will have a hand-drawn schematic and an AI-created example that is built off of the schematic drawn. When there are any conflicts between the two, go off of the schematic, not the AI-drawn example.
 
