@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
             const SizedBox(height: 40),
 
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
               children: [
 
