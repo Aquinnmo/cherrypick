@@ -3,21 +3,25 @@ import '../../core/app_theme.dart';
 import '../widgets/password_field.dart';
 import 'signup.dart';
 
-class LogInPage extends StatelessWidget
-{
+class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
 
   @override
-  Widget build(BuildContext context)
-  {
-    bool signUp = true;
-    String userEmail = '';
-    String userPassword = '';
+  State<LogInPage> createState() => _LogInPageState();
+}
+
+class _LogInPageState extends State<LogInPage> {
+  bool signUp = false;
+  String userEmail = '';
+  String userPassword = '';
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
               backgroundColor: AppTheme.primaryColor,
-              title: Text(
+              title: const Text(
                 'CherryPick🍒',
                 style: TextStyle(
                   color: Colors.white,
@@ -31,7 +35,7 @@ class LogInPage extends StatelessWidget
                 Align(
                   alignment: Alignment.topCenter,
                   child: Container(
-                      margin: EdgeInsets.only(top: 75),
+                      margin: const EdgeInsets.only(top: 75),
                       child: const Text(
                         'Welcome to CherryPick, the NHL pick \'em game!',
                         textAlign: TextAlign.center,
@@ -39,17 +43,13 @@ class LogInPage extends StatelessWidget
                           color: Colors.black,
                           fontSize: 16,
                         ),
-                      )
-                  ),
+                      )),
                 ),
-
                 const SizedBox(height: 40),
-
                 Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: Column(
                       children: [
-
                         //Email
                         TextField(
                           decoration: InputDecoration(
@@ -70,28 +70,26 @@ class LogInPage extends StatelessWidget
                         Align(
                           alignment: Alignment.centerRight,
                           child: ElevatedButton(
-                            onPressed: null,    // null is temporary
+                            onPressed: null, // null is temporary
                             child: const Text('Submit'),
                           ),
                         ),
-
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 20),
                         ),
-
                         ElevatedButton(
-                          onPressed: (){
-                            signUp ? signUp = false : signUp = true;
+                          onPressed: () {
+                            setState(() {
+                              signUp = !signUp;
+                            });
                           },
-                          child: signUp ? const Text('Have an account? Log In!') :
-                          const Text('New to CherryPick? Sign Up!'),
+                          child: signUp
+                              ? const Text('Have an account? Log In!')
+                              : const Text('New to CherryPick? Sign Up!'),
                         ),
                       ],
-                    )
-                )
+                    ))
               ],
-            )
-        )
-    );
+            )));
   }
 }
