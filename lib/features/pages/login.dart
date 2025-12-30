@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/app_theme.dart';
 import '../widgets/password_field.dart';
-import 'signup.dart';
 
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
