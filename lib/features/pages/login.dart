@@ -10,6 +10,7 @@ class LogInPage extends StatelessWidget
   @override
   Widget build(BuildContext context)
   {
+    bool signUp = true;
     String userEmail = '';
     String userPassword = '';
     return MaterialApp(
@@ -25,7 +26,6 @@ class LogInPage extends StatelessWidget
               ),
               centerTitle: true,
             ),
-
             body: Column(
               children: [
                 Align(
@@ -36,7 +36,7 @@ class LogInPage extends StatelessWidget
                         'Welcome to CherryPick, the NHL pick \'em game!',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0),
+                          color: Colors.black,
                           fontSize: 16,
                         ),
                       )
@@ -53,8 +53,7 @@ class LogInPage extends StatelessWidget
                         //Email
                         TextField(
                           decoration: InputDecoration(
-
-                            labelText: 'Login:',
+                            labelText: signUp ? 'Enter your email:' : 'Login:',
                           ),
                           onChanged: (value) => userEmail = value,
                         ),
@@ -68,23 +67,24 @@ class LogInPage extends StatelessWidget
 
                         const SizedBox(height: 20),
 
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            ElevatedButton(
-                              onPressed: null,    // null is temporary
-                              child: const Text('Login'),
-                            ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: ElevatedButton(
+                            onPressed: null,    // null is temporary
+                            child: const Text('Submit'),
+                          ),
+                        ),
 
-                            const SizedBox(width: 20),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                        ),
 
-                            ElevatedButton(
-                              onPressed: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpPage()));
-                              },
-                              child: const Text('Sign Up'),
-                            ),
-                          ],
+                        ElevatedButton(
+                          onPressed: (){
+                            signUp ? signUp = false : signUp = true;
+                          },
+                          child: signUp ? const Text('Have an account? Log In!') :
+                          const Text('New to CherryPick? Sign Up!'),
                         ),
                       ],
                     )
