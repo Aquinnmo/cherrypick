@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/app_theme.dart';
 import '../widgets/password_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
@@ -66,16 +67,48 @@ class _LogInPageState extends State<LogInPage> {
 
                         const SizedBox(height: 20),
 
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: ElevatedButton(
-                            onPressed: null, // null is temporary
-                            child: const Text('Submit'),
+                        Builder(builder: (context) =>
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                try
+                                {
+                                  if (signUp)
+                                    {
+                                      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                                          email: userEmail,
+                                          password: userPassword);
+                                    }
+                                  else
+                                    {
+                                      await FirebaseAuth.instance.signInWithEmailAndPassword(
+                                          email: userEmail,
+                                          password: userPassword);
+                                    }
+                                }
+                                on FirebaseAuthException catch (e)
+                                {
+                                  if (context.mounted) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text(
+                                          e.message ?? 'An error occurred')),
+                                    );
+                                  }
+
+                                  print(e.code);
+                                  print(e.toString());
+                                }
+                              },
+                              child: const Text('Submit'),
+                            ),
                           ),
                         ),
+
                         const Padding(
                           padding: EdgeInsets.symmetric(vertical: 20),
                         ),
+
                         ElevatedButton(
                           onPressed: () {
                             setState(() {

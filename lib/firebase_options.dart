@@ -68,4 +68,5 @@ class DefaultFirebaseOptions {
     iosClientId: '913700115830-e83rk7ffnfg7t1itql7j5hog5b9avio6.apps.googleusercontent.com',
     iosBundleId: 'com.example.cherrypick',
   );
+
 }
