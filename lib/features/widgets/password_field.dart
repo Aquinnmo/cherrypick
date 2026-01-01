@@ -29,6 +29,7 @@ class _PasswordState extends State<Password> {
             },
           )
       ),
+    onChanged: widget.onChanged,
     );
   }
 }

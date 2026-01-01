@@ -74,12 +74,23 @@ class _LogInPageState extends State<LogInPage> {
                               onPressed: () async {
                                 try
                                 {
-                                  if (signUp)
+                                  if (userEmail.isEmpty || userPassword.isEmpty)
                                     {
-                                      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                                          email: userEmail,
-                                          password: userPassword);
+                                      if (userEmail.isEmpty)
+                                        {
+                                          print("user email is empty");
+                                        }
+                                      if (userPassword.isEmpty)
+                                        {
+                                          print("user password is empty");
+                                        }
                                     }
+                                  else if (signUp) {
+                                    await FirebaseAuth.instance
+                                        .createUserWithEmailAndPassword(
+                                        email: userEmail,
+                                        password: userPassword);
+                                  }
                                   else
                                     {
                                       await FirebaseAuth.instance.signInWithEmailAndPassword(
