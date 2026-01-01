@@ -73,19 +73,7 @@ class _LogInPageState extends State<LogInPage> {
                             child: ElevatedButton(
                               onPressed: () async {
                                 try
-                                {
-                                  if (userEmail.isEmpty || userPassword.isEmpty)
-                                    {
-                                      if (userEmail.isEmpty)
-                                        {
-                                          print("user email is empty");
-                                        }
-                                      if (userPassword.isEmpty)
-                                        {
-                                          print("user password is empty");
-                                        }
-                                    }
-                                  else if (signUp) {
+                                {if (signUp) {
                                     await FirebaseAuth.instance
                                         .createUserWithEmailAndPassword(
                                         email: userEmail,
@@ -106,9 +94,6 @@ class _LogInPageState extends State<LogInPage> {
                                           e.message ?? 'An error occurred')),
                                     );
                                   }
-
-                                  print(e.code);
-                                  print(e.toString());
                                 }
                               },
                               child: const Text('Submit'),
