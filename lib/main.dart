@@ -1,6 +1,6 @@
+import 'package:cherrypick/features/auth/auth_gate.dart';
 import 'package:flutter/material.dart';
 import 'core/app_theme.dart';
-import 'features/pages/login.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'CherryPick🍒',
       theme: AppTheme.lightTheme,
-      home: const LogInPage(),
+      home: const AuthGate(),
     );
   }
 }
