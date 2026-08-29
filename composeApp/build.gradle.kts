@@ -33,6 +33,7 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
+            implementation(compose.materialIconsExtended)
             implementation(libs.compose.material3) // pinned to 1.12.0-alpha03 in libs.versions.toml
             // NOT compose.material3 -- that's the Compose plugin's own accessor, which
             // resolves to Compose Multiplatform 1.12.0's bundled stable material3 1.9.0,
