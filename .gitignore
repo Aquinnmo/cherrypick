@@ -52,3 +52,14 @@ app.*.map.json
 *.db
 .beads-credential-key
 .beads/proxieddb/
+
+# Kotlin Multiplatform / Gradle / Xcode
+.gradle/
+**/build/
+local.properties
+*.hprof
+captures/
+.kotlin/
+xcuserdata/
+DerivedData/
+*.xcuserstate
