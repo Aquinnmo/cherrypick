@@ -112,7 +112,15 @@ fun PicksScreen(leagueId: String, onBack: () -> Unit) {
         },
         floatingActionButtonPosition = FabPosition.Center,
     ) { padding ->
-        HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize().padding(padding)) { page ->
+        // verticalAlignment defaults to CenterVertically. A page shorter than the
+        // viewport gets centered -- invisible on week pages (games overflow), but it
+        // floated the standings table into the middle of the screen with ~650px of
+        // dead space above and below. Top-align every page, not just standings.
+        HorizontalPager(
+            state = pagerState,
+            verticalAlignment = Alignment.Top,
+            modifier = Modifier.fillMaxSize().padding(padding),
+        ) { page ->
             if (page == standingsPage) {
                 StandingsList(sampleStandings[leagueId].orEmpty())
             } else {
