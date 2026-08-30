@@ -46,3 +46,20 @@ app.*.map.json
 
 /.env
 */env/*.json
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+.beads/proxieddb/
+
+# Kotlin Multiplatform / Gradle / Xcode
+.gradle/
+**/build/
+local.properties
+*.hprof
+captures/
+.kotlin/
+xcuserdata/
+DerivedData/
+*.xcuserstate

@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "cherrypick",
+  "project_id": "e124662d-bc8c-4e16-89cd-b7f5c6f414c4"
+}
